@@ -1,0 +1,113 @@
+/* Outer Section wrapper para sa tamang vertical rhythm */
+.banner-section {
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+/* Base Card Layout */
+.cta-banner {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  
+  /* Mobile Spacing */
+  padding: 28px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.cta-title {
+  font-size: clamp(1.35rem, 3.5vw, 1.75rem);
+  font-weight: 700;
+  color: var(--text-main);
+  line-height: 1.25;
+}
+
+.cta-text {
+  color: var(--text-muted);
+  max-width: 520px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* Actions Wrapper */
+.cta-actions {
+  display: flex;
+  flex-direction: column; /* Stacked buttons sa mobile */
+  width: 100%;
+  max-width: 320px;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+/* Shared Button Styles */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px 20px; /* Minimum 44px touch target height */
+  border-radius: calc(var(--radius) - 4px);
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: #022c22;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+}
+
+.btn-secondary {
+  background-color: var(--bg-card-hover);
+  color: var(--text-main);
+  border: 1px solid var(--border);
+}
+
+.btn-secondary:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+/* ==========================================
+   DESKTOP BREAKPOINT (640px+)
+   ========================================== */
+@media (min-width: 640px) {
+  .banner-section {
+    margin-bottom: 56px;
+  }
+
+  .cta-banner {
+    padding: 40px 32px;
+    gap: 16px;
+  }
+
+  .cta-actions {
+    flex-direction: row; /* Tabi-tabi buttons sa Desktop */
+    width: auto;
+    max-width: none;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .btn {
+    width: auto;
+    padding: 10px 22px;
+  }
+}

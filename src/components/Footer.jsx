@@ -7,7 +7,7 @@ export function Footer({ onNavigate }) {
       <div className="footer-container">
         <button className="footer-brand" onClick={() => onNavigate('home')}>
           <BookOpen className="brand-icon" size={20} />
-          <span>Cookbook</span>
+          <span>{__APP_NAME__}</span>
         </button>
 
         <ul className="footer-links">

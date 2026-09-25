@@ -1,0 +1,65 @@
+/* ==========================================
+   HERO SECTION BASE STYLES (Mobile First)
+   ========================================== */
+.hero-section {
+  text-align: center;
+  width: 100%;
+  max-width: 750px;
+  margin: 24px auto 32px auto; /* Mas maliit na vertical margin sa mobile para kasya agad sa screen */
+  padding: 0 16px;            /* Pinipigilan ang pagdikit ng text sa gilid ng cellphone */
+}
+
+/* Base Styles (Mobile Default) */
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: var(--bg-accent);
+  color: var(--primary);
+  
+  /* Fluid typography: 0.75rem sa mobile, lalaki hanggang 0.85rem sa desktop */
+  font-size: clamp(0.75rem, 1.5vw, 0.85rem);
+  
+  /* Fluid padding: Kusa ring mag-a-adjust ang haba at kapal */
+  padding: clamp(4px, 1vw, 6px) clamp(10px, 2vw, 14px);
+  
+  border-radius: 20px;
+  margin-bottom: clamp(12px, 2vw, 16px);
+  border: 1px solid var(--border);
+  transition: all 0.2s ease;
+}
+.hero-title {
+  /* Minimum: 1.8rem (mobile), Preferred: 5vw, Maximum: 2.75rem (desktop) */
+  font-size: clamp(1.8rem, 5vw, 2.75rem);
+  font-weight: 800;
+  line-height: 1.25;
+  color: var(--text-main);
+  margin-bottom: 12px;
+}
+
+.hero-description {
+  /* Minimum: 0.95rem (mobile), Maximum: 1.125rem (desktop) */
+  font-size: clamp(0.95rem, 2vw, 1.125rem);
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+/* Desktop Screens (992px / 1024px pataas) */
+@media (min-width: 992px) {
+  .hero-section {
+        margin: 40px auto 48px auto; /* Babalik sa orihinal na spaced margin sa malalaking screen */
+        padding: 0 24px;
+    }
+  .hero-tag {
+    font-size: 0.85rem;          /* Babalik sa orihinal na sukat sa desktop */
+    padding: 6px 14px;
+    margin-bottom: 16px;
+  }
+  .hero-title {
+    margin-bottom: 16px;
+  }
+  .hero-description {
+    margin-bottom: 32px;
+  }
+}

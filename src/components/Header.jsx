@@ -17,7 +17,7 @@ export function Header({ activePage, onNavigate, theme, onToggleTheme }) {
         {/* Logo */}
         <div className="header-logo" onClick={() => handleNavClick('home')}>
           <Utensils size={24} className="logo-icon" />
-          <span className="logo-text">RecipeApp</span>
+          <span className="logo-text">{__APP_NAME__}</span>
         </div>
 
         {/* Navigation Links & Actions */}
