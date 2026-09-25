@@ -1,0 +1,182 @@
+/* HEADER SECTION */
+.downloads-header {
+  text-align: center;
+  max-width: 650px;
+  margin: 20px auto 40px auto;
+}
+
+.downloads-title {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 8px;
+}
+
+.downloads-subtitle {
+  color: var(--text-muted);
+  font-size: 1rem;
+}
+
+/* PLATFORMS GRID */
+.download-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-bottom: 56px;
+}
+
+.download-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.download-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--primary);
+}
+
+.download-card.featured {
+  border-color: var(--primary);
+  background-color: var(--bg-card);
+}
+
+.featured-badge {
+  position: absolute;
+  top: -12px;
+  background-color: var(--primary);
+  color: #022c22;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.platform-icon-wrapper {
+  width: 64px;
+  height: 64px;
+  background-color: rgba(16, 185, 129, 0.12);
+  color: var(--primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.platform-name {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 6px;
+}
+
+.platform-meta {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.platform-desc {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+  margin-bottom: 24px;
+  flex: 1;
+}
+
+.download-btn {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background-color: var(--primary);
+  color: #022c22;
+  font-weight: 700;
+  font-size: 0.95rem;
+  border-radius: calc(var(--radius) - 4px);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  text-decoration: none;
+}
+
+.download-btn:hover {
+  background-color: var(--primary-hover);
+}
+
+.download-btn-secondary {
+  background-color: var(--bg-card-hover);
+  color: var(--text-main);
+  border: 1px solid var(--border);
+}
+
+.download-btn-secondary:hover {
+  border-color: var(--primary);
+  background-color: var(--bg-card-hover);
+}
+
+/* INSTALLATION STEPS SECTION */
+.instructions-section {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px 24px;
+  margin-bottom: 48px;
+}
+
+.instructions-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.steps-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.step-item {
+  display: flex;
+  gap: 16px;
+}
+
+.step-number {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  background-color: var(--bg-accent);
+  color: var(--primary);
+  font-weight: 700;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+}
+
+.step-content-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 4px;
+}
+
+.step-content-desc {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}

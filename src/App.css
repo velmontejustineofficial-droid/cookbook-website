@@ -1,0 +1,52 @@
+/* ==========================================
+   APP LAYOUT STYLES (App.css)
+   ========================================== */
+
+/* Layout wrapper para sa sticky footer */
+.app-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Main Content Area */
+.main-content {
+  flex: 1; /* Itinutulak ang Footer sa pinaka-baba */
+  width: 100%;
+  padding-top: 70px; /* Space para sa fixed header para di matakpan ang content */
+}
+
+/* ==========================================
+   RESPONSIVE CONTAINER UTILITY
+   (Gamitin ang class="container" sa loob ng iyong Pages)
+   ========================================== */
+.container {
+  width: 100%;
+  padding-left: 16px;
+  padding-right: 16px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Tablet screens (768px pataas) */
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+/* Desktop screens (1024px pataas) */
+@media (min-width: 1024px) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+/* Large Displays (1280px pataas) */
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1200px;
+  }
+}

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <!-- Background Container -->
+  <rect width="512" height="512" rx="110" fill="#FF8C00"/>
+  
+  <!-- Outer Circle -->
+  <circle cx="256" cy="256" r="210" fill="#FFFFFF"/>
+  
+  <!-- Book Base -->
+  <path d="M 120,340 C 170,320 220,335 256,350 C 292,335 342,320 392,340 L 392,230 C 342,210 292,225 256,240 C 220,225 170,210 120,230 Z" fill="#2B3A42"/>
+  <path d="M 128,330 C 174,312 220,327 252,340 L 252,246 C 220,233 174,218 128,236 Z" fill="#FFFFFF"/>
+  <path d="M 384,330 C 338,312 292,327 260,340 L 260,246 C 292,233 338,218 384,236 Z" fill="#FFFFFF"/>
+  
+  <!-- Chef Hat -->
+  <path d="M 200,195 C 180,195 170,175 180,155 C 170,140 185,115 210,115 C 220,95 250,90 270,105 C 290,95 315,105 320,125 C 335,130 340,155 330,170 C 340,185 325,200 310,195 Z" fill="#FF8C00"/>
+  <path d="M 210,190 L 302,190 L 297,220 C 270,225 240,225 215,220 Z" fill="#E67E00"/>
+  
+  <!-- Fork & Spoon Accent -->
+  <path d="M 230,150 Q 235,130 240,115" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round"/>
+  <path d="M 282,150 Q 277,130 272,115" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round"/>
+</svg>

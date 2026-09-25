@@ -1,0 +1,129 @@
+/* Fixed Header Base Layout */
+.header-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 70px;
+  background-color: var(--bg-card);
+  border-bottom: 1px solid var(--border);
+  z-index: 1000;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+/* Logo */
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  color: var(--primary);
+}
+
+.logo-text {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+/* Desktop Navigation Links */
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.nav-link {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: var(--radius);
+  transition: all 0.2s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--primary);
+  background-color: var(--bg-accent);
+}
+
+/* Actions (Theme & Hamburger Button) */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.icon-btn,
+.mobile-toggle-btn {
+  background: none;
+  border: none;
+  color: var(--text-main);
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+}
+
+.icon-btn:hover,
+.mobile-toggle-btn:hover {
+  background-color: var(--bg-card-hover);
+}
+
+/* Tago muna ang Hamburger Button sa Desktop */
+.mobile-toggle-btn {
+  display: none;
+}
+
+/* ==========================================
+   MOBILE RESPONSIVE MENU (max-width: 768px)
+   ========================================== */
+@media (max-width: 768px) {
+  /* Ipakita na ang Hamburger Button sa mobile */
+  .mobile-toggle-btn {
+    display: flex;
+  }
+
+  /* Gawing Slide-down / Overlay Dropdown Menu ang Navigation */
+  .nav-menu {
+    position: absolute;
+    top: 70px; /* Sa ibaba mismong header */
+    left: 0;
+    right: 0;
+    background-color: var(--bg-card);
+    border-bottom: 1px solid var(--border);
+    flex-direction: column;
+    padding: 16px;
+    gap: 12px;
+
+    /* Nakatago sa simula (Hidden state) */
+    display: none;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Kapag pinindot ang hamburger icon, lilitaw ang class na .open */
+  .nav-menu.open {
+    display: flex;
+  }
+
+  .nav-link {
+    width: 100%;
+    text-align: left;
+    padding: 12px 16px;
+    font-size: 1rem;
+  }
+}
