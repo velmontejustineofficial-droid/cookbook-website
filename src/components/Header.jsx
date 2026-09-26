@@ -40,6 +40,12 @@ export function Header({ activePage, onNavigate, theme, onToggleTheme }) {
           >
             Downloads
           </button>
+          {/* <button
+            className={`nav-link ${activePage === 'portion' ? 'active' : ''}`}
+            onClick={() => handleNavClick('portion')}
+          >
+            portion
+          </button> */}
         </nav>
 
         {/* Right Actions (Theme Toggle & Mobile Toggle) */}
