@@ -1,182 +1,175 @@
 import { useState } from 'react';
-import { Search, Clock, Users, Utensils, Lock, Smartphone, Download } from 'lucide-react';
-
-// Correct imports based on standard folder structure (src/pages/ -> src/components/ & src/assets/)
-import { RecipeModal } from '../components/RecipeModal';
+import { 
+  Search, 
+  Clock, 
+  Users, 
+  Bookmark, 
+  Sparkles, 
+  SlidersHorizontal,
+  CheckCircle2
+} from 'lucide-react';
 import '../assets/RecipesPage.css';
+import { RecipeModal } from '../components/RecipeModal';
 
+// Sample recipes showcasing app content
 const SAMPLE_RECIPES = [
   {
     id: 1,
-    title: 'Chicken Adobo',
+    title: 'Classic Chicken Adobo',
     category: 'Main Dish',
-    description: 'Classic Philippine dish braised in vinegar, soy sauce, garlic, and bay leaves.',
-    prepTime: '45 mins',
-    servings: '4 People',
-    image: 'https://images.unsplash.com/photo-1541832676-9b763b0239ab?q=80&w=600&auto=format&fit=crop'
+    time: '45 mins',
+    servings: '4-6',
+    difficulty: 'Easy',
+    description: 'A savory Filipino classic made with chicken marinated in vinegar, soy sauce, garlic, and spices.',
+    image: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=600&q=80',
+    tags: ['Filipino', 'Popular', 'Offline Ready'],
+    isAppExclusive: false
   },
   {
     id: 2,
-    title: 'Pork Sinigang',
-    category: 'Soup',
-    description: 'Savory and sour soup made with pork belly, tamarind broth, and fresh vegetables.',
-    prepTime: '50 mins',
-    servings: '6 People',
-    image: 'https://images.unsplash.com/photo-1547592180-85f173990554?q=80&w=600&auto=format&fit=crop'
+    title: 'Creamy Carbonara',
+    category: 'Pasta',
+    time: '25 mins',
+    servings: '2-3',
+    difficulty: 'Medium',
+    description: 'Rich and creamy pasta tossed with crispy bacon, egg yolks, and freshly grated parmesan cheese.',
+    image: 'https://images.unsplash.com/photo-1612874742237-6526221588e3?auto=format&fit=crop&w=600&q=80',
+    tags: ['Italian', 'Quick Meal'],
+    isAppExclusive: true
   },
   {
     id: 3,
-    title: 'Fluffy Pancakes',
-    category: 'Breakfast',
-    description: 'Soft, golden breakfast pancakes served with maple syrup and butter.',
-    prepTime: '20 mins',
-    servings: '2 People',
-    image: 'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?q=80&w=600&auto=format&fit=crop'
-  },
-  {
-    id: 4,
-    title: 'Creamy Carbonara',
-    category: 'Pasta',
-    description: 'Rich pasta tossed with crispy bacon, egg yolks, parmesan cheese, and black pepper.',
-    prepTime: '25 mins',
-    servings: '3 People',
-    image: 'https://images.unsplash.com/photo-1612874742237-6526221588e3?q=80&w=600&auto=format&fit=crop'
-  },
-  {
-    id: 5,
-    title: 'Mango Float',
+    title: 'Fresh Mango Graham Float',
     category: 'Dessert',
-    description: 'Popular layered dessert made with graham crackers, sweet cream, and fresh sweet mangoes.',
-    prepTime: '15 mins',
-    servings: '8 People',
-    image: 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?q=80&w=600&auto=format&fit=crop'
+    time: '20 mins + Chill',
+    servings: '8',
+    difficulty: 'Easy',
+    description: 'A popular Filipino no-bake dessert layered with graham crackers, sweetened cream, and fresh sweet mangoes.',
+    image: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=600&q=80',
+    tags: ['Dessert', 'No-Bake'],
+    isAppExclusive: false
   }
 ];
 
-const CATEGORIES = ['All', 'Main Dish', 'Soup', 'Breakfast', 'Pasta', 'Dessert'];
+const CATEGORIES = ['All', 'Main Dish', 'Pasta', 'Dessert'];
 
-export function RecipesPage({ onNavigate }) {
-  const [searchQuery, setSearchQuery] = useState('');
+export default function RecipesPage({ appName = 'Cookbook', onNavigateToDownloads }) {
   const [selectedCategory, setSelectedCategory] = useState('All');
-  const [selectedRecipe, setSelectedRecipe] = useState(null);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [activeModalRecipe, setActiveModalRecipe] = useState(null);
 
-  const filteredRecipes = SAMPLE_RECIPES.filter((recipe) => {
-    const matchesSearch =
-      recipe.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      recipe.description.toLowerCase().includes(searchQuery.toLowerCase());
-
-    const matchesCategory =
-      selectedCategory === 'All' || recipe.category === selectedCategory;
-
-    return matchesSearch && matchesCategory;
+  const filteredRecipes = SAMPLE_RECIPES.filter(recipe => {
+    const matchesCategory = selectedCategory === 'All' || recipe.category === selectedCategory;
+    const matchesSearch = recipe.title.toLowerCase().includes(searchQuery.toLowerCase());
+    return matchesCategory && matchesSearch;
   });
 
   return (
-    <div className="page-container">
-      {/* Top App Conversion Promo Banner */}
-      <div className="recipes-promo-banner">
-        <div className="promo-text-group">
-          <Smartphone className="promo-icon" size={24} />
-          <div>
-            <div className="promo-title">Want full step-by-step instructions offline?</div>
-            <div className="promo-sub">Download our Android APK or Desktop App for unlimited offline recipes.</div>
-          </div>
-        </div>
-        <button
-          className="promo-btn"
-          onClick={() => onNavigate && onNavigate('downloads')}
-        >
-          <Download size={16} />
-          <span>Get Native App</span>
-        </button>
-      </div>
-
-      {/* Header Title */}
-      <header className="recipes-header">
-        <span className="recipes-badge">🍳 Premium Selection</span>
-        <h1 className="recipes-title">Recipe Collection</h1>
-        <p className="recipes-subtitle">
-          Preview our curated recipes. Click any recipe to unlock full ingredients and instructions on our App!
+    <div className="recipe-showcase-page container">
+      {/* Page Header */}
+      <header className="showcase-header">
+        <span className="showcase-tag">
+          <Sparkles size={14} /> Interactive App Preview
+        </span>
+        <h1 className="showcase-title">Explore What You Can Cook in {appName}</h1>
+        <p className="showcase-subtitle">
+          This preview demonstrates how our app organizes, filters, and presents step-by-step cooking guides with zero lag.
         </p>
       </header>
 
-      {/* Search & Categories */}
-      <div className="controls-section">
-        <div className="recipe-search-container">
-          <Search className="recipe-search-icon" size={18} />
-          <input
-            type="text"
-            className="recipe-search-input"
-            placeholder="Search by recipe name or ingredient..."
+      {/* App Feature Highlights Bar */}
+      <div className="app-highlights-bar">
+        <div className="highlight-item">
+          <CheckCircle2 size={16} className="highlight-icon" />
+          <span>500+ Handpicked Recipes</span>
+        </div>
+        <div className="highlight-item">
+          <CheckCircle2 size={16} className="highlight-icon" />
+          <span>Smart Ingredient Scaler</span>
+        </div>
+        <div className="highlight-item">
+          <CheckCircle2 size={16} className="highlight-icon" />
+          <span>Cook Mode (Screen Stays On)</span>
+        </div>
+      </div>
+
+      {/* Interactive Search & Filter Controls */}
+      <div className="showcase-controls">
+        <div className="search-input-wrapper">
+          <Search size={18} className="search-icon" />
+          <input 
+            type="text" 
+            placeholder="Search recipes (e.g., Adobo)..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
+            className="search-input"
           />
         </div>
 
-        <div className="category-filter-list">
-          {CATEGORIES.map((category) => (
+        <div className="category-filters">
+          <SlidersHorizontal size={16} className="filter-icon" />
+          {CATEGORIES.map(cat => (
             <button
-              key={category}
-              className={`category-btn ${selectedCategory === category ? 'active' : ''}`}
-              onClick={() => setSelectedCategory(category)}
+              key={cat}
+              className={`filter-btn ${selectedCategory === cat ? 'active' : ''}`}
+              onClick={() => setSelectedCategory(cat)}
             >
-              {category}
+              {cat}
             </button>
           ))}
         </div>
       </div>
 
-      {/* Recipes Grid */}
-      {filteredRecipes.length > 0 ? (
-        <div className="recipes-grid">
-          {filteredRecipes.map((recipe) => (
-            <article
-              key={recipe.id}
-              className="recipe-card"
-              onClick={() => setSelectedRecipe(recipe)}
-            >
-              <div className="recipe-image-container">
-                <img src={recipe.image} alt={recipe.title} className="recipe-image" />
-                <span className="recipe-badge">{recipe.category}</span>
+      {/* Recipe Cards Preview Grid */}
+      <div className="recipes-grid">
+        {filteredRecipes.map(recipe => (
+          <div key={recipe.id} className="recipe-card">
+            <div className="card-image-wrapper">
+              <img src={recipe.image} alt={recipe.title} loading="lazy" />
+              {recipe.isAppExclusive && (
+                <span className="badge-exclusive">App Exclusive</span>
+              )}
+              <button className="bookmark-btn" title="Save to App Favorites">
+                <Bookmark size={16} />
+              </button>
+            </div>
+
+            <div className="card-body">
+              <div className="card-tags">
+                {recipe.tags.map((tag, idx) => (
+                  <span key={idx} className="tag">{tag}</span>
+                ))}
               </div>
 
-              <div className="recipe-content">
-                <h2 className="recipe-card-title">{recipe.title}</h2>
-                <p className="recipe-card-desc">{recipe.description}</p>
+              <h3 className="recipe-title">{recipe.title}</h3>
 
-                <div className="recipe-meta">
-                  <div className="recipe-meta-item">
-                    <Clock size={14} />
-                    <span>{recipe.prepTime}</span>
-                  </div>
-                  <div className="recipe-meta-item">
-                    <Users size={14} />
-                    <span>{recipe.servings}</span>
-                  </div>
+              <div className="recipe-meta">
+                <div className="meta-info">
+                  <Clock size={14} />
+                  <span>{recipe.time}</span>
                 </div>
-
-                {/* Conversion Trigger Hint */}
-                <div className="card-lock-badge">
-                  <Lock size={14} />
-                  <span>Click to view full recipe & steps</span>
+                <div className="meta-info">
+                  <Users size={14} />
+                  <span>{recipe.servings}</span>
                 </div>
               </div>
-            </article>
-          ))}
-        </div>
-      ) : (
-        <div className="no-results">
-          <Utensils size={40} style={{ marginBottom: '12px', opacity: 0.5 }} />
-          <h3>No recipes found</h3>
-          <p>Try searching for a different term or selecting another category.</p>
-        </div>
-      )}
 
-      {/* Conversion Modal */}
-      <RecipeModal
-        recipe={selectedRecipe}
-        onClose={() => setSelectedRecipe(null)}
-        onNavigateToDownloads={() => onNavigate && onNavigate('downloads')}
+              <button 
+                className="preview-action-btn"
+                onClick={() => setActiveModalRecipe(recipe)}
+              >
+                View Full Recipe in App →
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Interactive Modal Component */}
+      <RecipeModal 
+        recipe={activeModalRecipe} 
+        onClose={() => setActiveModalRecipe(null)} 
+        onNavigateToDownloads={onNavigateToDownloads}
       />
     </div>
   );

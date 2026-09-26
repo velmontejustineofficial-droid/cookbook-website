@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { HomePage } from './pages/HomePage';
-import { RecipesPage } from './pages/RecipesPage';
+import RecipesPage from './pages/RecipesPage';
 import { DownloadsPage } from './pages/DownloadsPage';
 
 import './App.css';
