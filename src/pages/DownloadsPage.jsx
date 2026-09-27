@@ -1,4 +1,5 @@
-import { Download, Smartphone, Monitor, ShieldCheck, CheckCircle2 } from 'lucide-react';
+import React from 'react';
+import { Download, Smartphone, Monitor } from 'lucide-react';
 import '../assets/DownloadsPage.css';
 
 export function DownloadsPage() {
@@ -12,7 +13,8 @@ export function DownloadsPage() {
       isFeatured: true,
       featuredText: 'Most Popular',
       icon: <Smartphone size={32} />,
-      downloadUrl: '#' // Palitan ng totoong APK link
+      downloadUrl: '/cook-book.apk', // Make sure cook-book.apk is inside your 'public' folder
+      filename: 'cook-book.apk'
     },
     {
       id: 'windows',
@@ -22,7 +24,8 @@ export function DownloadsPage() {
       description: 'Standalone desktop app for Windows 10/11 with quick recipe search and offline database.',
       isFeatured: false,
       icon: <Monitor size={32} />,
-      downloadUrl: '#' // Palitan ng totoong .exe link
+      downloadUrl: '#',
+      filename: 'cook-book-installer.exe'
     },
     {
       id: 'desktop-other',
@@ -32,7 +35,8 @@ export function DownloadsPage() {
       description: 'Cross-platform desktop application built for Mac (Apple Silicon/Intel) and Linux distributions.',
       isFeatured: false,
       icon: <Monitor size={32} />,
-      downloadUrl: '#' // Palitan ng totoong link
+      downloadUrl: '#',
+      filename: 'cook-book-desktop.zip'
     }
   ];
 
@@ -66,6 +70,7 @@ export function DownloadsPage() {
 
             <a
               href={platform.downloadUrl}
+              download={platform.filename}
               className={`download-btn ${!platform.isFeatured ? 'download-btn-secondary' : ''}`}
             >
               <Download size={18} />
