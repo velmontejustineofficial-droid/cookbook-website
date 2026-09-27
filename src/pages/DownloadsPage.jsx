@@ -13,7 +13,7 @@ export function DownloadsPage() {
       isFeatured: true,
       featuredText: 'Most Popular',
       icon: <Smartphone size={32} />,
-      downloadUrl: '/cook-book.apk', // Make sure cook-book.apk is inside your 'public' folder
+      downloadUrl: '/downloads/cook-book.apk', // Make sure cook-book.apk is inside your 'public' folder
       filename: 'cook-book.apk'
     },
     {
